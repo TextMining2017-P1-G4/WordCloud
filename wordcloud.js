@@ -9,7 +9,8 @@ function submitWordCloud() {
 }
 
 function getWordCloud(keyword_input, select_input) {
-    var url =  '/get_word_cloud?' + 'keyword=' + keyword_input + '&select=' + select_input;
+    var url =  '/get_word_cloud?' + 'keyword=' + keyword_input + 
+                                    '&select=' + select_input;
     console.log(url);
     $.ajax({
         type: 'GET',
@@ -21,8 +22,8 @@ function getWordCloud(keyword_input, select_input) {
                 gridSize: 12,
                 weightFactor: 20,
                 click: function(item) {
-                    //alert(item[0] + ': ' + item[1]);
-                    getWordCloud(item[0]);
+                    var select_input = $('#select_input').val();
+                    getWordCloud(item[0], select_input);
                 },
                 //fontFamily: 'Finger Paint, cursive, sans-serif',
             });

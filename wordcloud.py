@@ -13,20 +13,21 @@ def keyword_search(keyword):
 
 
 def get_keywords(thesis, select):
+    select_map = {
+        '1': [u'系所名稱',
+              u'指導教授',
+              u'口試委員',
+              u'中文關鍵詞',
+              u'外文關鍵詞'],
+        '2': [u'中文關鍵詞',
+              u'外文關鍵詞'],
+        '3': [u'指導教授',
+              u'口試委員'],
+        '4': [u'系所名稱']
+    }
     attrs = dict([p[::-1] for p in enumerate(theses[0])])
-    if select == '1':
-        return thesis[attrs[u'中文關鍵詞']].split('\n') + \
-               thesis[attrs[u'外文關鍵詞']].split('\n')
-    if select == '2':
-        return thesis[attrs[u'指導教授']].split('\n')
-    if select == '3':
-        return thesis[attrs[u'系所名稱']].split('\n')
-    # return thesis[attrs[u'系所名稱']].split('\n') + \
-    #        thesis[attrs[u'作者']].split('\n') + \
-    #        thesis[attrs[u'指導教授']].split('\n') + \
-    #        thesis[attrs[u'口試委員']].split('\n') + \
-    #        thesis[attrs[u'中文關鍵詞']].split('\n') + \
-    #        thesis[attrs[u'外文關鍵詞']].split('\n')
+    words = [thesis[attrs[key]].split('\n') for key in select_map[select]]
+    return itertools.chain.from_iterable(words)
 
             
 def word_could(keyword, select):

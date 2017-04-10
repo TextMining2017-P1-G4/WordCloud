@@ -3,6 +3,7 @@ from os import curdir, sep
 import json
 import urllib
 import wordcloud
+import re
 
 PORT_NUMBER = 6466
 
@@ -48,16 +49,13 @@ class myHandler(BaseHTTPRequestHandler):
                 return
             else:
                 if self.path.startswith('/get_word_cloud?'):
-                    args = self.path.split('/get_word_cloud?')[-1]
-                    print args
-                    # keyword=asd&select=2
-                    args = args.split('&')
-                    print args
-                    # ['keyword=asd', 'select=2']
-                    keyword = args[0].split('=')[-1]
-                    print keyword
-                    select = args[1].split('=')[-1]
+                    pat = re.compile(r'/get_word_cloud\?' + \
+                          r'keyword=(?P<keyword>.+)&select=(?P<select>.+)')
+                    mat = pat.match(self.path)
+                    keyword = mat.group('keyword')
                     keyword = urllib.unquote(keyword).decode('utf-8')
+                    select = mat.group('select')
+
                     wc = wordcloud.word_could(keyword, select)
                     wc = [[ele[0].encode('utf-8'), ele[1]] for ele in wc]
                     wc = json.dumps(wc, ensure_ascii=False, encoding='utf-8')
