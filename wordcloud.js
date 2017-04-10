@@ -30,3 +30,8 @@ function getWordCloud(keyword_input, select_input) {
     });
 }
 
+$("#keyword_input").keyup(function(event){
+    if(event.keyCode == 13){
+        submitWordCloud();
+    }
+});

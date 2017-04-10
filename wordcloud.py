@@ -18,7 +18,7 @@ def get_keywords(thesis, select):
         return thesis[attrs[u'中文關鍵詞']].split('\n') + \
                thesis[attrs[u'外文關鍵詞']].split('\n')
     if select == '2':
-        return thesis[attrs[u'指導教授']].split('\n') + \
+        return thesis[attrs[u'指導教授']].split('\n')
     if select == '3':
         return thesis[attrs[u'系所名稱']].split('\n')
     # return thesis[attrs[u'系所名稱']].split('\n') + \
