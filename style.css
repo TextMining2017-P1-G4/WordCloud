@@ -1,0 +1,45 @@
+#bar{
+    width: 450px;/*必須要設定你整個DIV區塊的寬度*/
+    position: absolute;
+    margin: 15px 0px 0px 425px;/*調整水平垂直置中*/
+    
+    overflow: auto;
+}
+
+#canvas{
+    margin-top: 45px;
+    position: relative;
+    overflow: auto;
+}
+
+button{
+     padding:5px 15px; 
+     background:#ccc; 
+     border:0 none;
+     -webkit-border-radius: 5px;
+     border-radius: 5px; 
+}
+
+button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+input[type=text] {
+    height: 24px;
+    padding-left: 10px;
+    border: 2 solid #555;
+    border-radius: 4px;
+}
+
+select {    
+    padding: 5px 3px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}

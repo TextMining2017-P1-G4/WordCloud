@@ -26,3 +26,4 @@ function getWordCloud(keyword_input) {
         }
     });
 }
+

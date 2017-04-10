@@ -1,15 +1,26 @@
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="//cdn.bootcss.com/wordcloud2.js/1.0.6/wordcloud2.min.js"></script>
     <script type="text/javascript" src="wordcloud.js"></script>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 </head>
 <body>
-    <input type="text" name="keyword" id="keyword_input" placeholder="e.g.: 石墨"></input>
-    <span><button type="submit" id="submit" onclick="submitWordCloud();">Submit!</button></span>
-    <div id="canvas-container">
-        <canvas id="canvas" class="canvas" width="1170" height="760"></canvas>
+    
+    <div id="bar">
+        <input type="text" name="keyword" id="keyword_input" placeholder="Search..."></input>
+        <select name"select_one">
+            <option value="1">中英文關鍵字</option>
+            <option value="2">教授名字</option>
+            <option value="3">系所名稱</option>
+        </select>
+        <span><button type="submit" id="submit" style="cursor:pointer" onclick="submitWordCloud();">Submit!</button></span>
     </div>
+    <div id="canvas-container">
+        <canvas id="canvas" class="canvas" width=1270 height="525"></canvas>
+    </div>
+
+    
 </body>
 </html>
