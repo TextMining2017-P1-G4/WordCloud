@@ -48,9 +48,17 @@ class myHandler(BaseHTTPRequestHandler):
                 return
             else:
                 if self.path.startswith('/get_word_cloud?'):
-                    keyword = self.path.split('/get_word_cloud?')[-1]
+                    args = self.path.split('/get_word_cloud?')[-1]
+                    print args
+                    # keyword=asd&select=2
+                    args = args.split('&')
+                    print args
+                    # ['keyword=asd', 'select=2']
+                    keyword = args[0].split('=')[-1]
+                    print keyword
+                    select = args[1].split('=')[-1]
                     keyword = urllib.unquote(keyword).decode('utf-8')
-                    wc = wordcloud.word_could(keyword)
+                    wc = wordcloud.word_could(keyword, select)
                     wc = [[ele[0].encode('utf-8'), ele[1]] for ele in wc]
                     wc = json.dumps(wc, ensure_ascii=False, encoding='utf-8')
 

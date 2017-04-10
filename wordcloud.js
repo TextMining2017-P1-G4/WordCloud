@@ -1,16 +1,19 @@
 function submitWordCloud() {
     var keyword_input = $('#keyword_input').val();
+    var select_input = $('#select_input').val();
     if (keyword_input.length == 0) {
         // Do nothing
     } else {
-        getWordCloud(keyword_input);
+        getWordCloud(keyword_input, select_input);
     }
 }
 
-function getWordCloud(keyword_input) {
+function getWordCloud(keyword_input, select_input) {
+    var url =  '/get_word_cloud?' + 'keyword=' + keyword_input + '&select=' + select_input;
+    console.log(url);
     $.ajax({
         type: 'GET',
-        url: '/get_word_cloud?' + keyword_input,
+        url: url,
         success: function(json_str) {
             var list = JSON.parse(json_str);
             WordCloud(document.getElementById('canvas'), {
